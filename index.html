@@ -193,27 +193,15 @@
  <div class="spacer"></div>
 
 <script>
-  function toggleFAQ(element) {
-    const item = element.parentElement;
-    item.classList.toggle("active");
-  }
-
-  let homess = document.querySelector(".hero");
-  // let abt = document.querySelector(".");
-  // let cont = document.querySelector(".");
-  let faqq = document.querySelector(".faq-section");
-  function faqs(){
-    homess.style.display="none";
-    // abt.style.display="none";
-    // cont.style.display="none";
-    faqq.style.display="flex";
-
-    document.getElementById("Home").style.color="black";
-    // document.getElementById("Aboutus").style.color="black";
-    // document.getElementById("Contactus").style.color="black";
-    document.getElementById("Faq").style.color="#007acc";
-}
-</script>
+    window.addEventListener('scroll', function () {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
   
 </body>
 </html>

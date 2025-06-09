@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crashy Course</title>
+  <style>
+    body {
+      margin: 0;
+      /* font-family: Arial, sans-serif; */
+    }
+    .navbar {
+      background-color: #E3F2FD;
+      position: fixed;
+      top: 0;
+      transition: background-color 0.3s ease;
+      display: grid;
+      grid-template-columns: auto 3fr auto;
+      align-items: center;
+      padding: 1rem 2rem;
+      width: 100%;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+    .navbar nav {
+      display: flex;
+      justify-content: right;
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 3rem;
+      font-size: 25px;
+    }
+    .navbar .btn {
+      background-color: #E3F2FD;
+      color: #333;
+      padding: 0.5rem 1rem;
+      border: black 1px solid;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .hero {
+      display: flex;
+      margin-top:78px;
+      height: calc(100vh - 80px);
+      transition: all 1s ease-in-out;
+    }
+    .hero-left {
+      width: 35%;
+      background-color: white;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateX(0);
+      transition: transform 1s ease-in-out;
+    }
+    .hero-right {
+      width: 65%;
+      background-color: #E3F2FD;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(0);
+      transition: transform 1s ease-in-out;
+    }
+    .hero-left h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero-left span {
+      color: #007bff;
+    }
+    .hero-left p {
+      color: #555;
+      margin-bottom: 2rem;
+    }
+    .hero-left .learn-btn {
+      background-color: #E3F2FD;
+      color: black;
+      width: 170px;
+      margin-left: 120px;
+      padding: 0.75rem 1rem;
+      border: #70a2c6 1px solid;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .hero-right img {
+      max-width: 60%;
+      background-color: #E3F2FD;
+    }
+    .hovered-left .hero-left {
+      transform: translateX(-100%);
+    }
+    .hovered-right .hero-right {
+      transform: translateX(100%);
+    }
+    .faq-section {
+      background-color: #f1f1f1;
+      padding: 50px 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .faq-section h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 15px 20px;
+      margin: 0;
+      background-color: #e0f0ff;
+      color: #007acc;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 15px 20px;
+      background-color: #fff;
+      color: #333;
+      border-top: 1px solid #ddd;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .spacer {
+      height: 1500px; 
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div><strong style="font-size: 25px;">Agri ONE</strong></div>
+    <nav>
+      <!-- <a href="#">Home</a>
+      <a href="#">About us</a>
+      <a href="#">Contact us</a>
+      <a href="#">FAQ</a> -->
+      <a id="Home" onclick="homes()">Home</a> 
+      <a id="Aboutus" onclick="aboutuss()">About Us</a> 
+      <a id="Contactus" onclick="contactuss()">Contact Us</a> 
+      <a id="Faq" onclick="faqs()">FAQ</a> 
+    </nav>
+    <a href="#" class="btn">Register Now</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-left" id="hero-left">
+      <h1>Online <br><span>Learning</span></h1>
+      <p>Tagline or catchy phrase accusamus et<br> iusto adio dignissimas ducimus qui<br> bladitiis praesentium voluptatun<br> provident, similque deserunt mollitia animi,<br> id est laborum et dolorus</p>
+      <button class="learn-btn">LEARN MORE</button>
+    </div>
+    <div class="hero-right" id="hero-right">
+      <img src="img_1-removebg-preview.png" alt="Online Learning Illustration" />
+    </div>
+  </section>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">What is Agri ONE?</div>
+    <div class="faq-answer">Agri ONE is a learning platform offering agricultural courses and content.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">How do I register?</div>
+    <div class="faq-answer">Click on the “Register Now” button and fill out the required details.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">Are the courses free?</div>
+    <div class="faq-answer">Some courses are free while others may require a registration fee.</div>
+  </div>
+
+</section>
+
+ <div class="spacer"></div>
+
+<script>
+  function toggleFAQ(element) {
+    const item = element.parentElement;
+    item.classList.toggle("active");
+  }
+
+  let homess = document.querySelector(".hero");
+  // let abt = document.querySelector(".");
+  // let cont = document.querySelector(".");
+  let faqq = document.querySelector(".faq-section");
+  function faqs(){
+    homess.style.display="none";
+    // abt.style.display="none";
+    // cont.style.display="none";
+    faqq.style.display="flex";
+
+    document.getElementById("Home").style.color="black";
+    // document.getElementById("Aboutus").style.color="black";
+    // document.getElementById("Contactus").style.color="black";
+    document.getElementById("Faq").style.color="#007acc";
+}
+</script>
+  
+</body>
+</html>
